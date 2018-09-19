@@ -1,0 +1,16 @@
+{
+  "name": "rxjs-filter-test",
+  "version": "1.0.0",
+  "description": "Testing the scalability changes with different filter/share placements",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Brandon Horton",
+  "license": "ISC",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "performance-now": "^2.1.0",
+    "rxjs": "^6.1.0"
+  }
+}
