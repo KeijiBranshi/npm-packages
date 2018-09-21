@@ -13,11 +13,11 @@ const getAverageLatencyOfMessages = (completedMessages) => {
 
 const standardObserver = (completedMessagesList) => ({
     next: (message) => {
-        const endTime = now();
-        const clone = cloneDeep(message); // could this affect other handler's endtime?
-
-        clone.endTime = endTime;
-        completedMessagesList.push(clone);
+        completedMessagesList.push({
+            id: message.id,
+            startTime: message.startTime,
+            endTime: now()
+        });
     },
     error: () => { },
     complete: () => { }
