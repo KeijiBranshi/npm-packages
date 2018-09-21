@@ -4,7 +4,7 @@
   "description": "Testing the scalability changes with different filter/share placements",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "run": "node ./index.js"
   },
   "author": "Brandon Horton",
   "license": "ISC",

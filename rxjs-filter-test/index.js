@@ -7,30 +7,34 @@ const fs = require("fs");
 
 global.outputTestLogs = false;   // flip this to turn off big logs
 
-// Run test
-const uniqueMessageIdCounts = [10, 100];
-const observerPerMessageIdCounts = [1, 10];
+// Setup independent Variables (x, y)
+const uniqueMessageIdCounts = [10, 100, 200, 500, 1000];
+const observersPerMessageIdCounts = [1, 2, 4, 8, 16, 32, 64];
 const data = [];
 
-uniqueMessageIdCounts.forEach(uniqueMessageIdCount => {
-    observerPerMessageIdCounts.forEach(observerPerMessageIdCount => {
-        const usingRxJsFilterOperator = TestLatency_FilterOnSharedObservable(uniqueMessageIdCount, observerPerMessageIdCount);
-        const usingObserverListToFilter = TestLatency_MappingMessageIdsToObserverLists(uniqueMessageIdCount, observerPerMessageIdCount);
-        const usingSubjectsToFilter = TestLatency_MappingMessageIdsToSubjects(uniqueMessageIdCount, observerPerMessageIdCount);
+// Run through independent variables 
+uniqueMessageIdCounts.forEach(uniqueMessageIds => {
+    observersPerMessageIdCounts.forEach(observersPerMessageId => {
+        // Compute dependent variables (z)
+        const usingRxJsFilterOperator = TestLatency_FilterOnSharedObservable(uniqueMessageIds, observersPerMessageId);
+        const usingObserverListToFilter = TestLatency_MappingMessageIdsToObserverLists(uniqueMessageIds, observersPerMessageId);
+        const usingSubjectsToFilter = TestLatency_MappingMessageIdsToSubjects(uniqueMessageIds, observersPerMessageId);
 
         data.push({
-            UniqueMessageIds: uniqueMessageIdCount,
-            ObserversPerMessageId: observerPerMessageIdCount,
-            LatencyOfFilterOperator: usingRxJsFilterOperator,
-            LatencyOfObserverList: usingObserverListToFilter,
-            LatencyOfSubjects: usingSubjectsToFilter
+            UniqueMessageIds: uniqueMessageIds,                     // x
+            ObserversPerMessageId: observersPerMessageId,           // y
+            LatencyOfFilterOperator: usingRxJsFilterOperator,       // z1
+            LatencyOfObserverList: usingObserverListToFilter,       // z2
+            LatencyOfSubjects: usingSubjectsToFilter                // z3
         })
 
     })
 })
 
+// console.log as a nicely formatted table
 console.table(data);
 
+// minify data for output to a file
 const now = new Date();
 const minifiedData = data.map(result => ({
     id: result.UniqueMessageIds,
@@ -40,6 +44,7 @@ const minifiedData = data.map(result => ({
     sj: result.LatencyOfSubjects
 }));
 
+// write to file
 fs.writeFile(`./results/${now.getFullYear()}${now.getMonth()}${now.getDate()}-${now.getTime()}.json`, JSON.stringify(minifiedData), (err) => {
     if (err) {
         return console.log("Error writing to file.");
