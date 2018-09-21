@@ -11,6 +11,7 @@
   "dependencies": {
     "console.table": "^0.10.0",
     "performance-now": "^2.1.0",
-    "rxjs": "^6.1.0"
+    "rxjs": "^6.1.0",
+    "lodash": "^4.17.11"
   }
 }
