@@ -53,10 +53,10 @@ const TestLatency_MappingMessageIdsToSubjects = (subjectCount, observersPerSubje
         console.log(`Total Messages Received: ${completedMessages.length} (expected: ObserversPerSubject x Total Subject Count)`);
         console.log(`Average Latency per Message: ${averageLatency}`);
 
-        console.log("Completed Messages:")
-        completedMessages.forEach(message => {
-            console.log(`${message.id} - s: ${message.startTime}, e: ${message.endTime}`);
-        })
+        // console.log("Completed Messages:")
+        // completedMessages.forEach(message => {
+        //     console.log(`${message.id} - s: ${message.startTime}, e: ${message.endTime}`);
+        // })
         console.log("==========================================================================================");
     }
 
