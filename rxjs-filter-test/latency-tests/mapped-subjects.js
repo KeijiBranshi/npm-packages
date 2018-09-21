@@ -1,7 +1,7 @@
 const { Subject } = require("rxjs");
 const now = require("performance-now");
 
-const { standardObserver, getAverageLatencyOfMessages } = require("./utilities");
+const { standardObserver, getAverageLatencyOfMessages } = require("../utilities");
 
 /**
  * Measures average latency of messages sent to a bunch of observers. Messages come through
