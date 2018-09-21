@@ -1,4 +1,3 @@
-const { cloneDeep } = require("lodash");
 const now = require("performance-now");
 
 const getAverageLatencyOfMessages = (completedMessages) => {
