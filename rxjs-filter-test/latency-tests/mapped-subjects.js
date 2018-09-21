@@ -6,7 +6,7 @@ const { standardObserver, getAverageLatencyOfMessages } = require("../utilities"
 /**
  * Measures average latency of messages sent to a bunch of observers. Messages come through
  * a single source Observable/Subject, which then filters those messages via subjectDictionary
- * and directly calls .next() on appropriate subjects (which may or may not have observers).
+ * and calls .next() on appropriate subjects (which may or may not have observers).
  * @param {number} subjectCount
  * @param {number} observersPerSubject
  */

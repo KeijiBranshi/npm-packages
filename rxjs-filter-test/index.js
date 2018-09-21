@@ -21,9 +21,9 @@ uniqueMessageIdCounts.forEach(uniqueMessageIdCount => {
         data.push({
             UniqueMessageIds: uniqueMessageIdCount,
             ObserversPerMessageId: observerPerMessageIdCount,
-            "FilterOnSharedObservable - Latency": usingRxJsFilterOperator,
-            "ObserverList - Latency": usingObserverListToFilter,
-            "Subjects - Latency": usingSubjectsToFilter
+            LatencyOfFilterOperator: usingRxJsFilterOperator,
+            LatencyOfObserverList: usingObserverListToFilter,
+            LatencyOfSubjects: usingSubjectsToFilter
         })
 
     })
@@ -32,4 +32,18 @@ uniqueMessageIdCounts.forEach(uniqueMessageIdCount => {
 console.table(data);
 
 const now = new Date();
-fs.writeFile(`./results/${now.getFullYear()}${now.getMonth()}${now.getDate()}-${now.getTime}.json`, JSON.stringify(data));
+const minifiedData = data.map(result => ({
+    id: result.UniqueMessageIds,
+    ob: result.ObserversPerMessageId,
+    fo: result.LatencyOfFilterOperator,
+    obl: result.LatencyOfObserverList,
+    sj: result.LatencyOfSubjects
+}));
+
+fs.writeFile(`./results/${now.getFullYear()}${now.getMonth()}${now.getDate()}-${now.getTime()}.json`, JSON.stringify(minifiedData), (err) => {
+    if (err) {
+        return console.log("Error writing to file.");
+    }
+
+    console.log("Wrote to file.");
+});
