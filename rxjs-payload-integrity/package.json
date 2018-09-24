@@ -1,0 +1,14 @@
+{
+  "name": "rxjs-payload-integrity",
+  "version": "1.0.0",
+  "description": "Testing the integrity of different payloads passed through rxjs operators",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^6.3.2"
+  }
+}
