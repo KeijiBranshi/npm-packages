@@ -1,0 +1,15 @@
+{
+  "name": "rxjs-replay-to-distinct",
+  "version": "1.0.0",
+  "description": "Testing the effects of distinctUntilChanged operator applied to a replay subject",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "rxjs": "^6.3.2"
+  }
+}
