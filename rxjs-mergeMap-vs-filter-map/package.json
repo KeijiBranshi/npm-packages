@@ -1,0 +1,16 @@
+{
+  "name": "rxjs-mergemap-vs-filter-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "performance-now": "^2.1.0",
+    "rxjs": "^6.3.3"
+  }
+}
